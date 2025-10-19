@@ -1,26 +1,41 @@
 import "modern-normalize";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto } from "next/font/google";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ReactNode } from "react";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const roboto = Roboto({
+  variable: "--font-roboto",
+  weight: ["400", "700"],
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Note Hub",
-  description: "Created by GoIT",
+  title: "NoteHub",
+  description:
+    "NoteHub — simple and easy app to create, save and manage your notes",
+  icons: {
+    icon: "/favicon.png",
+  },
+  openGraph: {
+    title: "NoteHub",
+    description:
+      "NoteHub — simple and easy app to create, save and manage your notes",
+    url: "/",
+    images: [
+      {
+        url: "https://ac.goit.global/fullstack/react/notehub-og-meta.jpg",
+        width: 1200,
+        height: 630,
+        alt: "NoteHub — note management app",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -32,7 +47,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={roboto.variable}>
         <TanStackProvider>
           <Header />
 
